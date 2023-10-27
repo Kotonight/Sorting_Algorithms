@@ -4,6 +4,10 @@ from bubble import bubble
 from fullSearch import fullSearch
 from quick import quick
 from insert import insert
+from comb import comb
+from gnome import sort_g
+from heap import heap_sort
+from shaker import shaker
 
 def getAlgorythmTimeForBubble(array):
 
@@ -45,11 +49,55 @@ def getAlgorythmTimeForInsert(array, capacity):
 
     return end - start
 
-capacities = [10, 100, 1000, 10000]
+def getAlgorythmTimeForComb(array):
+
+    start = time.time()
+
+    comb(array)
+
+    end = time.time()
+
+    return end - start
+
+def getAlgorythmTimeForGnome(array):
+
+    start = time.time()
+
+    sort_g(array)
+
+    end = time.time()
+
+    return end - start
+
+def getAlgorythmTimeForHeap(array):
+
+    start = time.time()
+
+    heap_sort(array)
+
+    end = time.time()
+
+    return end - start
+
+def getAlgorythmTimeForShaker(array):
+
+    start = time.time()
+
+    shaker(array)
+
+    end = time.time()
+
+    return end - start
+
+capacities = [10, 100, 1000, 10000, 50000]
 bubbleTimes = []
 fullSearchTimes = []
 quickTimes = []
 insertTimes = []
+combTimes = []
+gnomeTimes = []
+heapTimes = []
+shakerTimes = []
 
 for capacity in capacities:
 
@@ -63,5 +111,9 @@ for capacity in capacities:
     fullSearchTimes.append(getAlgorythmTimeForFullSearch(a.copy(), capacity))
     quickTimes.append(getAlgorythmTimeForQuick(a.copy()))
     insertTimes.append(getAlgorythmTimeForInsert(a.copy(), capacity))
+    combTimes.append(getAlgorythmTimeForComb(a.copy()))
+    gnomeTimes.append(getAlgorythmTimeForGnome(a.copy()))
+    heapTimes.append(getAlgorythmTimeForHeap(a.copy()))
+    shakerTimes.append(getAlgorythmTimeForShaker(a.copy()))
 
-print("Bubble times", bubbleTimes, "FullSearch times", fullSearchTimes, "Quick times", quickTimes, "Insert times", insertTimes, sep="\n")
+print("Bubble times", bubbleTimes, "FullSearch times", fullSearchTimes, "Quick times", quickTimes, "Insert times", insertTimes, "Comb times", combTimes, "Gnome times", gnomeTimes, "Heap times", heapTimes, "Shaker times", shakerTimes, sep="\n")
